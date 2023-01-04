@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAreaData } from "./api";
+import { Card } from "@mui/material";
 
 import "./App.css";
 
@@ -46,7 +47,24 @@ function App() {
         </label>
         <button type="submit">Submit</button>
       </form>
+
       <h2>{`Areas for ${outcode}: ${areas.length}`}</h2>
+      <ul className="card_list">
+        {areas.map((area) => {
+          return (
+            <Card key={area["place name"]}>
+              <h3>{area["place name"]}</h3>
+              <h4>
+                {area.state}, {area["state abbreviation"]}
+              </h4>
+              <p>
+                <b>Latitude:</b> {area.latitude} <b> Longitude: </b>
+                {area.longitude}
+              </p>
+            </Card>
+          );
+        })}
+      </ul>
     </div>
   );
 }
