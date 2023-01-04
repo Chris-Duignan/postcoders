@@ -1,4 +1,5 @@
 #root {
+  display: flex;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -6,7 +7,17 @@
 }
 
 .App {
-  height: 90vh;
+  min-height: 90vh;
   width: 90vw;
   border: solid grey 2px;
+}
+
+.card_list {
+  width: 90%;
+  padding: 0;
+  margin: 2.5rem auto;
+}
+
+.MuiCard-root {
+  margin: 5px;
 }
