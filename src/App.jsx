@@ -6,14 +6,20 @@ import "./App.css";
 
 function App() {
   const [areas, setAreas] = useState([]);
+  const [cache, setCache] = useState({});
   const [search, setSearch] = useState("");
   const [outcode, setOutcode] = useState("bb10");
 
   const load = async () => {
     try {
-      const areaData = await getAreaData(outcode);
+      if (cache.hasOwnProperty(outcode)) {
+        setAreas(cache[outcode]);
+      } else {
+        const areaData = await getAreaData(outcode);
 
-      setAreas(areaData);
+        setAreas(areaData);
+        setCache({ ...cache, [outcode]: areaData });
+      }
     } catch (error) {
       window.alert("todo: fix app");
     }
